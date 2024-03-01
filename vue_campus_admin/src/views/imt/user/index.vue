@@ -223,7 +223,7 @@
       >
         <template slot-scope="scope">
           <span>{{
-              scope.row.shopType == 1 ? "预约出货量最大门店" : "预约附近门店"
+              scope.row.shopType == 1 ? "预约出货量最大门店" : scope.row.shopType == 2 ? "预约附近门店" :"预约指定门店"
             }}</span>
         </template>
       </el-table-column>
@@ -602,6 +602,10 @@ export default {
         {
           value: 2,
           label: "预约你的位置(经纬度)附近门店",
+        },
+        {
+          value: 3,
+          label: "预约指定门店",
         },
       ],
       // I茅台预约商品列表格数据

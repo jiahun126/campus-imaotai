@@ -117,14 +117,14 @@ public class IUserController {
     @PostMapping(name = "新增I茅台用户")
     public R add(@RequestBody IUser iUser) {
 
-        IShop iShop = iShopService.selectByIShopId(iUser.getIshopId());
-        if (iShop == null) {
-            throw new ServiceException("门店商品id不存在");
-        }
-        iUser.setLng(iShop.getLng());
-        iUser.setLat(iShop.getLat());
-        iUser.setProvinceName(iShop.getProvinceName());
-        iUser.setCityName(iShop.getCityName());
+//        IShop iShop = iShopService.selectByIShopId(iUser.getIshopId());
+//        if (iShop == null) {
+//            throw new ServiceException("门店商品id不存在");
+//        }
+//        iUser.setLng(iShop.getLng());
+//        iUser.setLat(iShop.getLat());
+//        iUser.setProvinceName(iShop.getProvinceName());
+//        iUser.setCityName(iShop.getCityName());
 
         return R.ok(iUserService.insertIUser(iUser));
     }
@@ -135,14 +135,14 @@ public class IUserController {
     @PreAuthorize("@ss.resourceAuth()")
     @PutMapping(name = "修改I茅台用户")
     public R edit(@RequestBody IUser iUser) {
-        IShop iShop = iShopService.selectByIShopId(iUser.getIshopId());
-        if (iShop == null) {
-            throw new ServiceException("门店商品id不存在");
-        }
-        iUser.setLng(iShop.getLng());
-        iUser.setLat(iShop.getLat());
-        iUser.setProvinceName(iShop.getProvinceName());
-        iUser.setCityName(iShop.getCityName());
+//        IShop iShop = iShopService.selectByIShopId(iUser.getIshopId());
+//        if (iShop == null) {
+//            throw new ServiceException("门店商品id不存在");
+//        }
+//        iUser.setLng(iShop.getLng());
+//        iUser.setLat(iShop.getLat());
+//        iUser.setProvinceName(iShop.getProvinceName());
+//        iUser.setCityName(iShop.getCityName());
         return R.ok(iUserService.updateIUser(iUser));
     }
 

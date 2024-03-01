@@ -22,9 +22,10 @@ public interface IShopMapper extends BaseMapperX<IShop> {
 
         return selectPage(new LambdaQueryWrapperX<IShop>()
                 .eqIfPresent(IShop::getIShopId,iShop.getIShopId())
-                .likeIfPresent(IShop::getProvinceName, iShop.getProvinceName())
-                .likeIfPresent(IShop::getDistrictName, iShop.getDistrictName())
-                .likeIfPresent(IShop::getCityName, iShop.getCityName())
+                .eqIfPresent(IShop::getProvinceName, iShop.getProvinceName())
+                .eqIfPresent(IShop::getDistrictName, iShop.getDistrictName())
+                .eqIfPresent(IShop::getCityName, iShop.getCityName())
+                .likeIfPresent(IShop::getName, iShop.getName())
                 .likeIfPresent(IShop::getTenantName, iShop.getTenantName())
                 .betweenIfPresent(IShop::getCreateTime, iShop.getParams())
         );

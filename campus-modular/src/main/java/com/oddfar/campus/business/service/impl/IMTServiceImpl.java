@@ -3,6 +3,8 @@ package com.oddfar.campus.business.service.impl;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.Mode;
 import cn.hutool.crypto.Padding;
 import cn.hutool.crypto.symmetric.AES;
@@ -13,6 +15,7 @@ import cn.hutool.http.Method;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import com.google.common.collect.Lists;
 import com.oddfar.campus.business.entity.IUser;
 import com.oddfar.campus.business.mapper.IUserMapper;
 import com.oddfar.campus.business.service.IMTLogFactory;
@@ -29,6 +32,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -46,7 +50,7 @@ public class IMTServiceImpl implements IMTService {
 
     private static final Logger logger = LoggerFactory.getLogger(IMTServiceImpl.class);
 
-    @Autowired
+    @Resource
     private IUserMapper iUserMapper;
 
     @Autowired
@@ -186,8 +190,16 @@ public class IMTServiceImpl implements IMTService {
         String logContent = "";
         for (String itemId : items) {
             try {
-                String shopId = iShopService.getShopId(iUser.getShopType(), itemId,
-                        iUser.getProvinceName(), iUser.getCityName(), iUser.getLat(), iUser.getLng());
+                String shopId = null;
+                if(iUser.getShopType() == 3){
+                    shopId = iShopService.getShopId( itemId, Lists.newArrayList(iUser.getIshopId().split(",")));
+                }else{
+                    shopId = iShopService.getShopId(iUser.getShopType(), itemId,
+                            iUser.getProvinceName(), iUser.getCityName(), iUser.getLat(), iUser.getLng());
+                }
+                if(StrUtil.isEmpty(shopId)){
+                    throw new ServiceException("获取店铺失败");
+                }
                 //预约
                 JSONObject json = reservation(iUser, itemId, shopId);
                 logContent += String.format("[预约项目]：%s\n[shopId]：%s\n[结果返回]：%s\n\n", itemId, shopId, json.toString());
@@ -221,7 +233,7 @@ public class IMTServiceImpl implements IMTService {
                 String logContent = "";
                 //sleep 10秒
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(100000);
                     //预约后领取耐力值
                     String energyAward = getEnergyAward(iUser);
                     logContent += "[申购耐力值]:" + energyAward;
@@ -475,15 +487,15 @@ public class IMTServiceImpl implements IMTService {
 
         for (IUser iUser : iUsers) {
             logger.info("「开始预约用户」" + iUser.getMobile());
-            //预约
-            reservation(iUser);
+
             //延时3秒
             try {
-                TimeUnit.SECONDS.sleep(3);
+                TimeUnit.SECONDS.sleep(3 * RandomUtil.randomInt(1,20));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+            //预约
+            reservation(iUser);
         }
     }
 
@@ -499,7 +511,7 @@ public class IMTServiceImpl implements IMTService {
                 logger.info("「开始获得旅行奖励」" + iUser.getMobile());
                 getTravelReward(iUser);
                 //延时3秒
-                TimeUnit.SECONDS.sleep(3);
+                TimeUnit.SECONDS.sleep(3 * RandomUtil.randomInt(1,20));
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -518,6 +530,12 @@ public class IMTServiceImpl implements IMTService {
         logger.info("申购结果查询开始=========================");
         List<IUser> iUsers = iUserService.selectReservationUser();
         for (IUser iUser : iUsers) {
+            //延时3*随机 秒
+            try {
+                TimeUnit.SECONDS.sleep(3 * RandomUtil.randomInt(1,20));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             try {
                 String url = "https://app.moutai519.com.cn/xhr/front/mall/reservation/list/pageOne/query";
                 String body = HttpUtil.createRequest(Method.GET, url)

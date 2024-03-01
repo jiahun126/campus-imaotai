@@ -1,5 +1,6 @@
 package com.oddfar.campus.business.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
@@ -18,6 +19,7 @@ import com.oddfar.campus.business.service.IShopService;
 import com.oddfar.campus.common.core.RedisCache;
 import com.oddfar.campus.common.exception.ServiceException;
 import com.oddfar.campus.common.utils.StringUtils;
+import org.apache.commons.compress.utils.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -237,6 +239,33 @@ public class IShopServiceImpl extends ServiceImpl<IShopMapper, IShop> implements
 
 
         return shopId;
+    }
+
+    @Override
+    public String getShopId(String itemId, List<String> shopIds) {
+        if(CollUtil.isEmpty(shopIds)){
+            throw new ServiceException("申购时根据类型获取的门店商品id为空");
+        }
+        //获取门店列表
+        List<IShop> iShops = selectShopList();
+        //获取今日的门店信息列表
+        List<IShop> list = iShops.stream().filter(i -> shopIds.contains(i.getIShopId())).collect(Collectors.toList());
+        List<String> shopIdList = Lists.newArrayList();
+        for(IShop shop : list){
+            //查询所在省市的投放产品和数量
+            List<IMTItemInfo> shopList = getShopsByProvince(shop.getProvinceName(), itemId);
+            //取id集合
+            Long count = shopList.stream().filter(i -> shop.getIShopId().equals(i.getShopId())).map(IMTItemInfo::getShopId).count();
+            if(count > 0){
+                shopIdList.add(shop.getIShopId());
+            }
+        }
+        for(String sid : shopIds){
+            if(shopIdList.contains(sid)){
+                return sid;
+            }
+        }
+        return null;
     }
 
     /**

@@ -12,6 +12,7 @@
         <el-input
           v-model="queryParams.iShopId"
           placeholder="请输入商品ID"
+          style="width: 120px"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -20,6 +21,7 @@
         <el-input
           v-model="queryParams.provinceName"
           placeholder="请输入省份"
+          style="width: 120px"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -28,6 +30,7 @@
         <el-input
           v-model="queryParams.cityName"
           placeholder="请输入城市"
+          style="width: 120px"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -36,6 +39,7 @@
         <el-input
           v-model="queryParams.districtName"
           placeholder="请输入地区"
+          style="width: 120px"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -64,14 +68,14 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item> -->
-      <!-- <el-form-item label="名称" prop="name">
+       <el-form-item label="名称" prop="name">
         <el-input
           v-model="queryParams.name"
           placeholder="请输入名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
-      </el-form-item> -->
+      </el-form-item>
       <el-form-item label="公司名称" prop="tenantName">
         <el-input
           v-model="queryParams.tenantName"

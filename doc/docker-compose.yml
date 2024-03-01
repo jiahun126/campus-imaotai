@@ -1,0 +1,21 @@
+version : '3'
+
+services:
+  redis:
+    image: redis:6.2.12
+    container_name: redis
+    command: "redis-server /redis/config/redis.conf"
+    privileged: true
+    network_mode: "host"
+
+  campus-server:
+    image: campus/campus-modular
+    container_name: campus-modular
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+
+    volumes:
+      - /docker/server/conf:/home/campus/conf
+    privileged: true
+    network_mode: "host"

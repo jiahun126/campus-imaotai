@@ -44,5 +44,13 @@ public interface IShopService extends IService<IShop> {
      */
     String getShopId(int shopType, String itemId, String province, String city, String lat, String lng);
 
+    /**
+     * @param shopType 1：预约本市出货量最大的门店，2：预约你的位置附近门店
+     * @param itemId   项目id即预约项目code
+     * @param shopIds 指定门店
+     * @return
+     */
+    String getShopId(String itemId, List<String> shopIds);
+
 
 }

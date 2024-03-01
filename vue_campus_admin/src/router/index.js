@@ -62,7 +62,7 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '',
+    path: '/',
     component: Layout,
     redirect: 'index',
     children: [
@@ -173,5 +173,6 @@ Router.prototype.push = function push(location) {
 export default new Router({
   mode: 'history', // 去掉url中的#
   scrollBehavior: () => ({ y: 0 }),
+  base:'mt',
   routes: constantRoutes
 })
