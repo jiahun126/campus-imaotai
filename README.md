@@ -105,3 +105,149 @@ i茅台app，每日自动预约茅台
 22420126007008  洪山区丁字桥南路茅台酱香万家共享主题终端
 22420133003001  洪山街道丁字桥南路茅台酱香万家共享主题终端
 242420130005    洪山区梨园街贵州茅台专卖店
+
+-- 获取用户信息
+POST /front-manager/api/customer/queryById/token HTTP/1.1
+host: gw.huiqunchina.com
+content-length: 16
+x-hmac-date: Fri, 01 Mar 2024 04:39:45 GMT
+datatype: json
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090819) XWEB/8555
+x-hmac-digest: JtsOLxi21Zl/lAr7iRjRs+vqoMuzlLZEztyqo0Hqlpc=
+content-type: application/json
+x-hmac-signature: PjY81drR9zs4geTOaooH8cHmJh4ZX7Bz65ZduZtUfwY=
+x-hmac-algorithm: hmac-sha256
+channel: miniapp
+x-access-token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDA0MTA1OTU4IiwiaXNzIjoiZ21hbGwtc3RhcnNreSIsImxvZ0lkIjoibnVsbCIsImV4cCI6MTcxNzAzODIwMiwiaWF0IjoxNzA5MjYyMjAyfQ.GLaeWC1miZFE7SZiDCvOWh2oxQLLlAHCOUD4IRq0Mz0
+x-hmac-access-key: 92bed99d5e7be7fb8c96ecda53b4dbab
+accept: */*
+origin: https://hqmall.huiqunchina.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://hqmall.huiqunchina.com/
+accept-encoding: gzip
+accept-language: zh-CN,zh;q=0.9
+cookie: _c_WBKFRo=vtQiwMZp6VFKQmlGTLv9o9vSIL0hwWwWQDPifpZZ; aliyungf_tc=e0684ee4475908a766a15483a4d049d4817c034543179c811db3e8547dee6534; acw_tc=ac11000117092673794708604ec886f54a18bb92e333e1a2327a973d4e6b99; JSESSIONID=F2B2A3B4DF14F6D482B035ED4D9E5A93
+Connection: close
+
+{"channel":"h5"}
+{"traceId":"ac11000117092679869256827ea80f","serverTimeStamp":1709267987073,"code":"10000","data":{"openId":"oK-hU5ByO5YqFrBpVtA2Qlrddmgg","headUrl":"https://huiqun-public.huiqunchina.com/514e19a6-7d8e-48d2-b6c6-e797df9060a9.png","realName":"胡建","b2b":false,"isReadNotice":false,"phone":"13554261783","isRealNameAuth":true,"idcard":"4211***********7319","nickname":"用户1783","custType":4,"phoneIsBind":true,"isModifyAuth":false,"status":"1"},"success":true}
+
+-- 查看活动id
+POST /front-manager/api/customer/promotion/channelActivity HTTP/1.1
+host: gw.huiqunchina.com
+content-length: 2
+x-hmac-date: Fri, 01 Mar 2024 04:39:45 GMT
+datatype: json
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090819) XWEB/8555
+x-hmac-digest: ffMkMKL4wUMNoFgfrLW4qO/abWpS3IbCbJKQyKX9f/s=
+content-type: application/json
+x-hmac-signature: 9Xc6ynwmUbZVE2gwoMuETUjmIxksSDbOVqzA3IFN4Qo=
+x-hmac-algorithm: hmac-sha256
+channel: miniapp
+x-access-token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDA0MTA1OTU4IiwiaXNzIjoiZ21hbGwtc3RhcnNreSIsImxvZ0lkIjoibnVsbCIsImV4cCI6MTcxNzAzODIwMiwiaWF0IjoxNzA5MjYyMjAyfQ.GLaeWC1miZFE7SZiDCvOWh2oxQLLlAHCOUD4IRq0Mz0
+x-hmac-access-key: 92bed99d5e7be7fb8c96ecda53b4dbab
+accept: */*
+origin: https://hqmall.huiqunchina.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://hqmall.huiqunchina.com/
+accept-encoding: gzip
+accept-language: zh-CN,zh;q=0.9
+cookie: _c_WBKFRo=vtQiwMZp6VFKQmlGTLv9o9vSIL0hwWwWQDPifpZZ; aliyungf_tc=e0684ee4475908a766a15483a4d049d4817c034543179c811db3e8547dee6534; acw_tc=ac11000117092673794708604ec886f54a18bb92e333e1a2327a973d4e6b99; JSESSIONID=F2B2A3B4DF14F6D482B035ED4D9E5A93
+Connection: close
+
+{}
+
+{"traceId":"ac11000117092679869935485e2d61","serverTimeStamp":1709267987041,"code":"10000","data":{"appointStartTime":1709136330000,"purchaseEndTime":1709287200000,"sysCurrentTime":"1709267987034","drawTime":1709258400000,"playMode":1,"purchaseStartTime":1709265600000,"winningCertificateUrl":"https://huiqun-private.huiqunchina.com/424e91cb-744f-41f5-b6d2-34b43b44dc2a.pdf","appointCounts":6900,"name":" 第一期0229-0301预约摇号农特产品购买活动","startTime":1709136330000,"id":517,"endTime":1709287200000,"isAppoint":0,"appointEndTime":1709222399000},"success":true}
+
+// 获取葫芦娃是否可申购
+POST /front-manager/api/customer/promotion/channelActivity HTTP/1.1
+host: gw.huiqunchina.com
+content-length: 2
+x-hmac-date: Fri, 01 Mar 2024 04:17:30 GMT
+datatype: json
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090819) XWEB/8555
+x-hmac-digest: ffMkMKL4wUMNoFgfrLW4qO/abWpS3IbCbJKQyKX9f/s=
+content-type: application/json
+x-hmac-signature: ZWXxD2fOKMC5AX8wKV+Xpj8dK1jEGkXCMrzmk/NLblE=
+x-hmac-algorithm: hmac-sha256
+channel: miniapp
+x-access-token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDA0MzE5ODQxIiwiaXNzIjoiZ21hbGwtc3RhcnNreSIsImxvZ0lkIjoibnVsbCIsImV4cCI6MTcxNzA0MjY0NiwiaWF0IjoxNzA5MjY2NjQ2fQ.W3wTZUlXUW4q_v2dTjzyIyTmhVslPlyYRa1ZH6tBHa0
+x-hmac-access-key: 92bed99d5e7be7fb8c96ecda53b4dbab
+accept: */*
+origin: https://hqmall.huiqunchina.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://hqmall.huiqunchina.com/
+accept-encoding: gzip
+accept-language: zh-CN,zh;q=0.9
+cookie: _c_WBKFRo=vtQiwMZp6VFKQmlGTLv9o9vSIL0hwWwWQDPifpZZ; aliyungf_tc=e0684ee4475908a766a15483a4d049d4817c034543179c811db3e8547dee6534; acw_tc=ac11000117092650583047392eeaab937e9906794d7101631a0e3042dad122; JSESSIONID=E567DCE790AF76E016EDA5E7C2C528F4
+Connection: close
+
+{}
+
+{"traceId":"ac11000117092666506196870ee1df","serverTimeStamp":1709266650664,"code":"10000",
+"data":{"appointStartTime":1708358700000,"purchaseEndTime":1708509600000,"sysCurrentTime":"1709266650658","drawTime":1708480800000,"playMode":1,"purchaseStartTime":1708488000000,"winningCertificateUrl":"https://huiqun-private.huiqunchina.com/8cfc3cbc-af03-41d6-a494-1dac439b0dfd.pdf","appointCounts":10000,"name":"预约活动","startTime":1708358700000,"id":510,"endTime":1708509600000,"isAppoint":0,"appointEndTime":1708444799000},"success":true}
+
+-- 判断是否已经预约过
+POST /front-manager/api/customer/promotion/checkCustomerInQianggou HTTP/1.1
+host: gw.huiqunchina.com
+content-length: 20
+x-hmac-date: Fri, 01 Mar 2024 04:17:30 GMT
+datatype: json
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090819) XWEB/8555
+x-hmac-digest: i9EKJIk6F+YRn0LG1fXvTYVycceHCV0hCnWqHW4Z9C4=
+content-type: application/json
+x-hmac-signature: bn6Y7no/rED/CxPcUkotrpi+ZeBYlh9MK+c+Voqphho=
+x-hmac-algorithm: hmac-sha256
+channel: miniapp
+x-access-token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDA0MzE5ODQxIiwiaXNzIjoiZ21hbGwtc3RhcnNreSIsImxvZ0lkIjoibnVsbCIsImV4cCI6MTcxNzA0MjY0NiwiaWF0IjoxNzA5MjY2NjQ2fQ.W3wTZUlXUW4q_v2dTjzyIyTmhVslPlyYRa1ZH6tBHa0
+x-hmac-access-key: 92bed99d5e7be7fb8c96ecda53b4dbab
+accept: */*
+origin: https://hqmall.huiqunchina.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://hqmall.huiqunchina.com/
+accept-encoding: gzip
+accept-language: zh-CN,zh;q=0.9
+cookie: _c_WBKFRo=vtQiwMZp6VFKQmlGTLv9o9vSIL0hwWwWQDPifpZZ; aliyungf_tc=e0684ee4475908a766a15483a4d049d4817c034543179c811db3e8547dee6534; acw_tc=ac11000117092650583047392eeaab937e9906794d7101631a0e3042dad122; JSESSIONID=E567DCE790AF76E016EDA5E7C2C528F4
+Connection: close
+
+{"activityId":"215"}
+
+{"traceId":"ac11000117092666509952895e55bc","serverTimeStamp":1709266651036,"code":"10000","data":false,"success":true}
+
+
+
+POST /front-manager/api/customer/promotion/getWinningCustomers HTTP/1.1
+host: gw.huiqunchina.com
+content-length: 18
+x-hmac-date: Fri, 01 Mar 2024 04:38:14 GMT
+datatype: json
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090819) XWEB/8555
+x-hmac-digest: e2lbvXJDlvGfRXW6Fl1i/rr3ifDm7HTtIsb0G7NIYng=
+content-type: application/json
+x-hmac-signature: IqqqutQhXvjFG2M6yJ2udIwUzAmM/wAo6hgFAM8pv6s=
+x-hmac-algorithm: hmac-sha256
+channel: miniapp
+x-access-token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDI4OTEzOTcxIiwiaXNzIjoiZ21hbGwtc3RhcnNreSIsImxvZ0lkIjoibnVsbCIsImV4cCI6MTcxNjk0ODk1OSwiaWF0IjoxNzA5MTcyOTU5fQ.f56ajLEY8pokLvUGm1K2ZCKT5YqdgAfYK1_v81o0zcA
+x-hmac-access-key: 92bed99d5e7be7fb8c96ecda53b4dbab
+accept: */*
+origin: https://hqmall.huiqunchina.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://hqmall.huiqunchina.com/
+accept-encoding: gzip
+accept-language: zh-CN,zh;q=0.9
+cookie: _c_WBKFRo=vtQiwMZp6VFKQmlGTLv9o9vSIL0hwWwWQDPifpZZ; aliyungf_tc=e0684ee4475908a766a15483a4d049d4817c034543179c811db3e8547dee6534; acw_tc=ac11000117092673794708604ec886f54a18bb92e333e1a2327a973d4e6b99; JSESSIONID=F2B2A3B4DF14F6D482B035ED4D9E5A93
+Connection: close
+
+{"activityId":515}
+
+{"traceId":"ac11000117092678951583421e2f80","serverTimeStamp":1709267895303,"code":"10000","data":false,"success":true,"message":"预约失败！"}
