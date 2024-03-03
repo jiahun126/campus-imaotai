@@ -27,11 +27,11 @@ public class CampusIMTTask {
     /**
      * 1：10 批量修改用户随机预约的时间
      */
-//    @Async
-//    @Scheduled(cron = "0 10 1 ? * * ")
-//    public void updateUserMinuteBatch() {
-//        iUserService.updateUserMinuteBatch();
-//    }
+    @Async
+    @Scheduled(cron = "0 10 8 ? * * ")
+    public void updateUserMinuteBatch() {
+        iUserService.updateUserMinuteBatch();
+    }
 
 
     /**
@@ -47,7 +47,7 @@ public class CampusIMTTask {
      * 9点期间，每分钟执行一次
      */
     @Async
-    @Scheduled(cron = "0 0/5 9 ? * *")
+    @Scheduled(cron = "0 0/1 9 ? * *")
     public void reservationBatchTask() {
         imtService.reservationBatch();
 

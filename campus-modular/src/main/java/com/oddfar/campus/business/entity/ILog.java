@@ -35,6 +35,8 @@ public class ILog {
     @TableId("log_id")
     private Long logId;
 
+    private String oper;
+
     /**
      * 日志记录内容
      */
