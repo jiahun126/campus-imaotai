@@ -96,6 +96,7 @@
     >
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="用户" align="center" prop="mobile" />
+      <el-table-column label="业务类型" align="center" prop="oper" />
       <el-table-column
         label="日志记录内容"
         align="center"
